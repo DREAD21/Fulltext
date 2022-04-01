@@ -68,3 +68,6 @@ C:\Users\Никита\Desktop\c#\front\front\obj\Debug\net5.0\front.dll
 C:\Users\Никита\Desktop\c#\front\front\obj\Debug\net5.0\ref\front.dll
 C:\Users\Никита\Desktop\c#\front\front\obj\Debug\net5.0\front.pdb
 C:\Users\Никита\Desktop\c#\front\front\obj\Debug\net5.0\front.genruntimeconfig.cache
+C:\Users\Никита\Desktop\c#\front\front\bin\Debug\net5.0\EasyData.Core.dll
+C:\Users\Никита\Desktop\c#\front\front\bin\Debug\net5.0\Korzh.EasyQuery.dll
+C:\Users\Никита\Desktop\c#\front\front\bin\Debug\net5.0\Korzh.EasyQuery.Linq.dll

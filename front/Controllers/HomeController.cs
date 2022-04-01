@@ -4,6 +4,8 @@ using System.Linq;
 using front.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Korzh.EasyQuery.Linq;
+
 
 namespace front.Controllers
 {
@@ -25,7 +27,7 @@ namespace front.Controllers
 
             if (!String.IsNullOrEmpty(name))
             {
-                _texts = _texts.Where(p => p.Id == int.Parse(name));
+                _texts = db.Texts.FullTextSearchQuery(name);
             }
             ViewModel view = new ViewModel
             {
