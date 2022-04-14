@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "R9wkdPUafe8j/unmn3FEg3HUpVGFh0Pts1PslRHYtI7KtrUypl+UUNQnnKAKDetT1cCXMjs+yLTX04n734HdCQ==",
+  "dgSpecHash": "J0yqYqYq4EFkVXnZkPjXOmu7XasNx0DPAcDP1LA3GoRMX4SYAAZRVnt/Ti9iA8RFIJ1BYn5LhO4ysGT7X4oLGQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Никита\\Desktop\\c#\\front\\front\\front.csproj",
+  "projectFilePath": "C:\\Users\\Никита\\Desktop\\c#\\Fulltext\\front\\front.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Никита\\.nuget\\packages\\easydata.core\\1.4.3\\easydata.core.1.4.3.nupkg.sha512",
     "C:\\Users\\Никита\\.nuget\\packages\\korzh.easyquery\\7.2.1\\korzh.easyquery.7.2.1.nupkg.sha512",

@@ -3,7 +3,7 @@
     Layout = null;
 }
 @model front.Models.ViewModel
-    <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -18,43 +18,38 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand ps-3">FullTextSearch</a>   
+            <a class="navbar-brand ps-4">FullTextSearch</a>
+                <form asp-action="newElement" method="post" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                    <div class="input-group">
+                        <input name="_text" class="form-control" type="text" placeholder="New Element" aria-label="New Element" aria-describedby="btnNavbarSearch" />
+                        <input type="submit"  value="Добавить в базу данных" class="btn btn-default text-white-50" />
+                    </div>
+                </form>
         </nav>
         <div id="layoutSidenav">    
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
                         <h3>База данных</h3>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <div class="row">                              
-                                    <div class="col-md-2">
-                                        <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                            <div class="input-group">
-                                                <input name="name" class="form-control" type="text" placeholder="Search fullText" aria-label="Search fullText" aria-describedby="btnNavbarSearch" />
-                                                <input type="submit" value="Поиск" class="btn btn-default" />
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <form asp-action="newElement" method="post" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                            <div class="input-group">
-                                                <input name="_text" class="form-control" type="text" placeholder="New Element" aria-label="New Element" aria-describedby="btnNavbarSearch"/>
-                                                <input type="submit" value="Добавить в базу данных" class="btn btn-default" />
-                                            </div>
-                                        </form>
-                                    </div>
+                        <div class="card-group">
+                            <div class="card">
+                                <div class="card-header">
+                                    <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                        <div class="input-group">
+                                            <input name="name" class="form-control" type="text" placeholder="Search for Id" aria-label="Search for Id" aria-describedby="btnNavbarSearch" />
+                                            <input type="submit" value="Поиск" class="btn btn-default"/>
+                                        </div>
+                                    </form>
                                 </div>
-                            </div>
-                            <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
+                                <div class="card-body">
+                                    <table id="datatablesSimple">
+                                        <thead>
                                         <tr>
                                             <th>Id</th>
                                             <th>Text</th>
                                         </tr>
-                                    </thead>
-                                    <tbody>
+                                        </thead>
+                                        <tbody>
                                         @foreach (var item in Model.Texts)
                                         {
                                             <tr>
@@ -63,8 +58,38 @@
                                                 <td>@item.text</td>
                                             </tr>
                                         }
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>    
+                            <div class="card">
+                                <div class="card-header">
+                                    <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                        <div class="input-group">
+                                            <input name="full_name" class="form-control" type="text" placeholder="Search fullText" aria-label="Search fullText" aria-describedby="btnNavbarSearch" />
+                                            <input type="submit" value="Поиск" class="btn btn-default" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="card-body">
+                                    <table id="datatablesSimple">
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Text</th></tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach (var item in Model.Full_Texts)
+                                        {
+                                            <tr>
+
+                                                <td>@item.Id</td>
+                                                <td>@item.text</td>
+                                            </tr>
+                                        }
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

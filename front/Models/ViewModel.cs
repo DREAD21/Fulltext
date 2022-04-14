@@ -8,6 +8,7 @@ namespace front.Models
     public class ViewModel
     {
         public IEnumerable<Text> Texts { get; set; }
+        public IEnumerable<Text> Full_Texts { get; set; }
         public string Name { get; set; }
     }
 }
