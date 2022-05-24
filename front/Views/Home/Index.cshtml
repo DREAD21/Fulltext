@@ -23,7 +23,7 @@
         <form asp-action="newElement" method="post" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
                 <input type="text" name="_text" class="form-control" aria-describedby="btnNavbarSearch" />
-                
+
                 <input type="submit" value="Добавить в базу данных" class="btn btn-default text-white-50" />
             </div>
         </form>
@@ -36,48 +36,11 @@
                     <div class="card-group">
                         <div class="card">
                             <div class="card-header">
- 
-                            <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                <div class="input-group">
-                                    <input type="text" name="name" class="form-control" aria-describedby="btnNavbarSearch" />
-                                    <input type="submit" value="Поиск по Id" class="btn btn-default" />
-                                </div>
-                            </form>                               
-                            </div>                         
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <table id="datatablesSimple">
-                                            <thead>
-                                                <tr>
-                                                    <th>Id</th>
-                                                    <th>Text</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var item in Model.Texts)
-                                                {
-                                                    <tr>
 
-                                                        <td>@item.Id</td>
-                                                        <td>@item.text</td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-                                    </div>    
-                                    <div class="col-7">
-                                        <img src="https://github.com/DREAD21/Fulltext/blob/master/Screenshot_36.png?raw=true" class="rounded float-right" alt="...">
-                                    </div>
-                                </div>                         
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
                                 <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                     <div class="input-group">
-                                        <input type="text" name="full_name" class="form-control" aria-describedby="btnNavbarSearch" />
-                                        <input type="submit" value="Полнотекстовый поиск(Regex: Type + ',' + ' ' + value)" class="btn btn-default" />                                    
+                                        <input type="text" name="name" class="form-control" aria-describedby="btnNavbarSearch" />
+                                        <input type="submit" value="Поиск по Id" class="btn btn-default" />
                                     </div>
                                 </form>
                             </div>
@@ -104,18 +67,55 @@
                                         </table>
                                     </div>
                                     <div class="col-7">
-                                        <img src="https://github.com/DREAD21/Fulltext/blob/master/Screenshot_36.png?raw=true" class="rounded float-right" alt="...">
+                                        <img src="https://github.com/DREAD21/Fulltext/blob/master/k0QVSRwnBj8OGd3rqDovl1s9Lir0yDj-ofptv_iqoTZDTK4DSZUcGGmikTxJiEjNhItITnXEyKfMdku8aM_rAR6y.jpg?raw=true" class="img-fluid" alt="...">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                 
+                        <div class="card">
+                            <div class="card-header">
+                                <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                    <div class="input-group">
+                                        <input type="text" name="full_name" class="form-control" aria-describedby="btnNavbarSearch" />
+                                        <input type="submit" value="Полнотекстовый поиск(Regex: Type + ',' + ' ' + value)" class="btn btn-default" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <table id="datatablesSimple">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Text</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.Full_Texts)
+                                                {
+                                                    <tr>
+
+                                                        <td>@item.Id</td>
+                                                        <td>@item.text</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-7">
+                                        <img src="https://github.com/DREAD21/Fulltext/blob/master/s2ZBGehVbv1xMz4me1mYHDtIZ9Tu2qQtn5aYBl3vVv08VOG1v666Ra6GjHbNt9ljNVgDpMBvsLMPZrYVhlPoVKeG.jpg?raw=true" class="img-fluid" alt="...">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </main>
         </div>
     </div>
-  
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
