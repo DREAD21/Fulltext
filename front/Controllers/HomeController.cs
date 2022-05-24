@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using front.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Korzh.EasyQuery.Linq;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace front.Controllers
@@ -20,10 +20,12 @@ namespace front.Controllers
             db = context;
         }
 
+        [HttpGet]
         public IActionResult Index(string name, string full_name)
         {
-            IQueryable<Text> _texts = (IQueryable<Text>) db.Texts;
+            IQueryable<Text> _texts = (IQueryable<Text>)db.Texts;
             IQueryable<Text> _full_name = db.Texts;
+            
 
             if (!String.IsNullOrEmpty(name))
             {
@@ -32,32 +34,33 @@ namespace front.Controllers
 
             if (!String.IsNullOrEmpty(full_name))
             {
-                string new_name = full_name.Remove(0, full_name.IndexOf(',')+2);
+                string new_name = full_name.Remove(0, full_name.IndexOf(',') + 2);
                 if (full_name.Substring(0, full_name.IndexOf(',')) == "FreeText")
                 {
-                    
-                    _full_name = db.Texts.FullTextSearchQuery(new_name);
+                    _full_name = db.Texts.Where(f => EF.Functions.FreeText(f.text, new_name));
                 }
                 if (full_name.Substring(0, full_name.IndexOf(',')) == "Contains")
                 {
-                    _full_name = null;
+                    _full_name = from p in db.Texts
+                                 where p.text.Contains(new_name)
+                                 select p;
                 }
+             
             }
 
-            ViewModel view = new ViewModel 
+            ViewModel view = new ViewModel
             {
                 Texts = _texts.ToList(),
                 Name = name,
                 Full_Texts = _full_name.ToList()
             };
-          
+
             return View(view);
-        } return View(view);
         }
 
-        
+
         [HttpPost]
-        public IActionResult newElement(string? _text)
+        public IActionResult newElement(string _text)
         {
             if (!String.IsNullOrEmpty(_text))
             {
@@ -73,10 +76,6 @@ namespace front.Controllers
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+
     }
 }
