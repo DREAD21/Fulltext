@@ -20,8 +20,7 @@ namespace front.Controllers
             db = context;
         }
 
-        [HttpGet]
-        public IActionResult Index(string? name, string? full_name)
+        public IActionResult Index(string name, string full_name)
         {
             IQueryable<Text> _texts = (IQueryable<Text>) db.Texts;
             IQueryable<Text> _full_name = db.Texts;
@@ -33,7 +32,16 @@ namespace front.Controllers
 
             if (!String.IsNullOrEmpty(full_name))
             {
-                _full_name = db.Texts.FullTextSearchQuery(full_name);
+                string new_name = full_name.Remove(0, full_name.IndexOf(',')+2);
+                if (full_name.Substring(0, full_name.IndexOf(',')) == "FreeText")
+                {
+                    
+                    _full_name = db.Texts.FullTextSearchQuery(new_name);
+                }
+                if (full_name.Substring(0, full_name.IndexOf(',')) == "Contains")
+                {
+                    _full_name = null;
+                }
             }
 
             ViewModel view = new ViewModel 
@@ -44,6 +52,7 @@ namespace front.Controllers
             };
           
             return View(view);
+        } return View(view);
         }
 
         
