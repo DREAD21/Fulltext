@@ -22,8 +22,8 @@
         <a class="navbar-brand ps-4">FullTextSearch</a>
         <form asp-action="newElement" method="post" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
-                <input type="text" name="_text" class="form-control" asp-for="validator2" aria-describedby="btnNavbarSearch" />
-                <span asp-validation-for="validator2"></span>
+                <input type="text" name="_text" class="form-control" aria-describedby="btnNavbarSearch" />
+                
                 <input type="submit" value="Добавить в базу данных" class="btn btn-default text-white-50" />
             </div>
         </form>
@@ -36,66 +36,80 @@
                     <div class="card-group">
                         <div class="card">
                             <div class="card-header">
-                                <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                                    <div class="input-group">
-                                        <input type="text" name="name" class="form-control" asp-for="validator" aria-describedby="btnNavbarSearch" />
-                                        <span asp-validation-for="validator"></span>
-                                        <input type="submit" value="Поиск" class="btn btn-default" />
-                                    </div>
-                                </form>
-                            </div>
+ 
+                            <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                                <div class="input-group">
+                                    <input type="text" name="name" class="form-control" aria-describedby="btnNavbarSearch" />
+                                    <input type="submit" value="Поиск по Id" class="btn btn-default" />
+                                </div>
+                            </form>                               
+                            </div>                         
                             <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Text</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Texts)
-                                        {
-                                            <tr>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <table id="datatablesSimple">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Text</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.Texts)
+                                                {
+                                                    <tr>
 
-                                                <td>@item.Id</td>
-                                                <td>@item.text</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                                        <td>@item.Id</td>
+                                                        <td>@item.text</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>    
+                                    <div class="col-7">
+                                        <img src="https://github.com/DREAD21/Fulltext/blob/master/Screenshot_36.png?raw=true" class="rounded float-right" alt="...">
+                                    </div>
+                                </div>                         
                             </div>
                         </div>
                         <div class="card">
                             <div class="card-header">
                                 <form method="get" class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
                                     <div class="input-group">
-                                        <input type="text" name="full_name" class="form-control" asp-for="validator2" aria-describedby="btnNavbarSearch" />
-                                        <span asp-validation-for="validator2"></span>
-                                        <input type="submit" value="Поиск" class="btn btn-default" />
+                                        <input type="text" name="full_name" class="form-control" aria-describedby="btnNavbarSearch" />
+                                        <input type="submit" value="Полнотекстовый поиск(Regex: Type + ',' + ' ' + value)" class="btn btn-default" />                                    
                                     </div>
                                 </form>
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>Id</th>
-                                            <th>Text</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Full_Texts)
-                                        {
-                                            <tr>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <table id="datatablesSimple">
+                                            <thead>
+                                                <tr>
+                                                    <th>Id</th>
+                                                    <th>Text</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var item in Model.Texts)
+                                                {
+                                                    <tr>
 
-                                                <td>@item.Id</td>
-                                                <td>@item.text</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
+                                                        <td>@item.Id</td>
+                                                        <td>@item.text</td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-7">
+                                        <img src="https://github.com/DREAD21/Fulltext/blob/master/Screenshot_36.png?raw=true" class="rounded float-right" alt="...">
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                 
                     </div>
                 </div>
             </main>
